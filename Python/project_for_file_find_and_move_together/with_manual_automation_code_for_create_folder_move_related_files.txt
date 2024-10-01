@@ -1,0 +1,16 @@
+import os,shutil # os path check & shutil for make folder and move to folder
+path=r"E:/BANK APPLICATION/da/Power_BI/project_for_file_find_and_move_together/"
+print(os.listdir(path))
+file_name=os.listdir(path)
+folder_name=['jpg files','xlsx files','txt files']
+for loop in range(0,3):
+    if  not  os.path.exists(path+folder_name[loop]): #its check thee folder are thir in the path
+        print(path+folder_name[loop])
+        os.makedirs(path+folder_name[loop]) # its create the folder
+for file in file_name:
+    if ".jpg" in file and not os.path.exists(path+'jpg files/'+file): #Its check the files in created folder
+        shutil.move(path+file,path+"jpg files/"+file) # moved the files to related folders
+    elif ".xlsx" in file and not os.path.exists(path+'xlsx files/'+file):
+        shutil.move(path+file,path+"xlsx files/"+file)
+    elif ".txt" in file and not os.path.exists(path+'txt files/'+file):
+        shutil.move(path+file,path+"txt files/"+file)
